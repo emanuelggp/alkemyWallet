@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Selector de opciones</title>
+  <script>
+    function mostrarOpcion() {
+  let select = document.getElementById("cuentaOrigen");
+  let input = document.getElementById("miInput");
+
+  input.value = select.value;
+
+}
+
+    
+    function cargarDatosContacto() {
+      let nombreContacto = this.parentNode.parentNode.querySelector('.nombre').textContent;
+      let rutContacto = this.parentNode.parentNode.querySelector('.rut').textContent;
+      let tipoCuenta = this.parentNode.parentNode.querySelector('.tipoCuenta').textContent;
+      let cuentaDestino = this.parentNode.parentNode.querySelector('.cuenta').textContent;
+      let banco = this.parentNode.parentNode.querySelector('.banco').textContent;
+
+      document.getElementById('contactoDestino').value = nombreContacto;
+      document.getElementById('rutContacto').value = rutContacto;
+      document.getElementById('tipoCuenta').value = tipoCuenta;
+      document.getElementById('cuentaDestino').value = cuentaDestino;
+      document.getElementById('banco').value = banco;
+    }
+
+    function transferirDinero() {
+      let monto = parseFloat(document.getElementById('monto').value);
+
+      if (isNaN(monto) || monto <= 0) {
+        alert('Por favor, ingresa un monto válido.');
+        return;
+      }
+
+      let cuentaOrigen = document.getElementById('cuentaOrigen').value;
+      let contactoDestino = document.getElementById('contactoDestino').value;
+      let cuentaDestino = document.getElementById('cuentaDestino').value;
+
+      alert('La transferencia de ' + monto + ' ha sido realizada exitosamente de la cuenta ' + cuentaOrigen + ' a la cuenta ' + cuentaDestino + ' (' + contactoDestino + ').');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      let botonesSeleccionar = document.getElementsByClassName('botonSeleccionar');
+      for (let i = 0; i < botonesSeleccionar.length; i++) {
+        botonesSeleccionar[i].addEventListener('click', cargarDatosContacto);
+      }
+
+      document.getElementById('btnTransferir').addEventListener('click', transferirDinero);
+    });
+  </script>
+</head>
+<body>
+  <h1>Selector de opciones</h1>
+  
+  <table id="contactTable" class="container text-center m-auto mb-3 rounded shadow">
+    <thead  class="mb-3">
+      <tr>
+        <th>Nombre:</th>
+        <th>Rut:</th>
+        <th>Tipo de Cuenta:</th>
+        <th>Número de Cuenta:</th>
+        <th>Banco:</th>
+        <th>Seleccionar:</th>
+      </tr>
+    </thead>
+    <tbody  class="mt-3">
+      <tr>
+        <td class="nombre">Fulano Detal</td>
+        <td class="rut">12.345.678-9</td>
+        <td class="tipoCuenta">Cuenta corriente</td>
+        <td class="cuenta">00-000-123-456</td>
+        <td class="banco">Banco Chile</td>
+        <td><button class="botonSeleccionar btn btn-primary">Seleccionar</button></td>
+      </tr>
+      <tr>
+        <td class="nombre">María Pérez</td>
+        <td class="rut">9.876.543-2</td>
+        <td class="tipoCuenta">Cuenta Rut</td>
+        <td class="cuenta">9876543</td>
+        <td class="banco">Banco Estado</td>
+        <td><button class="botonSeleccionar btn btn-primary">Seleccionar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form class="col-md-4 mb-3 mt-3 m-auto">
+    <div class="m-auto">
+      <label for="cuentaOrigen" class="form-label">Cuenta de origen:</label>
+      <select id="cuentaOrigen" onchange="mostrarOpcion()" class="form-select">
+        <option>Seleccione una cuenta</option>
+        <option value="CCnum-123-456">Cuenta corriente</option>
+        <option value="TC-visa-5199-5633">Tarjeta de crédito</option>
+        <option value="CD-987-321">Cuenta dólar</option>
+      </select>
+    </div>
+    <br>
+    <input type="text" id="miInput" placeholder="Cuenta de origen" readonly><br><br>
+
+    <label for="contactoDestino">Contacto de Destino:</label>
+    <input type="text" id="contactoDestino" readonly placeholder="Nombre de contacto"><br><br>
+
+    <label for="rutContacto">Rut:</label>
+    <input type="text" id="rutContacto" readonly placeholder="Rut de contacto"><br><br>
+
+    <label for="tipoCuenta">Tipo de Cuenta:</label>
+    <input type="text" id="tipoCuenta" readonly placeholder="Tipo de cuenta"><br><br>
+
+    <label for="cuentaDestino">Cuenta de Destino:</label>
+    <input type="text" id="cuentaDestino" readonly placeholder="Número de cuenta"><br><br>
+
+    <label for="banco">Banco:</label>
+    <input type="text" id="banco" readonly placeholder="Banco"><br><br>
+
+    <label for="monto">Monto:</label>
+    <input type="number" id="monto"><br><br>
+
+    <button id="btnTransferir" type="button">Transferir</button>
+  </form>
+</body>
+</html>

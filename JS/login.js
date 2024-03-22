@@ -1,5 +1,6 @@
-var usuarioValido = "usuario123";
-var contrasenaValida = "claveSecreta";
+
+let usuarioValido = "usuario123";
+let contrasenaValida = "claveSecreta";
 
 function verificarCredenciales(event){
 
@@ -8,16 +9,17 @@ function verificarCredenciales(event){
 
     if (usuarioIngresado === usuarioValido && contrasenaIngresada === contrasenaValida) {
         alert('Inicio de sesión exitoso');
-        window.location.href = '../menu.html';
+        window.location.href = "../menu.html";
+
+        
     } 
     
     else {
         
         alert('Credenciales incorrectas');
     }
-} //cierre
+} 
 
-// asociar la funcion al formulario
 document.getElementById("login-form").addEventListener("submit", verificarCredenciales);
 
 
