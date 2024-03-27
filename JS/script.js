@@ -24,7 +24,7 @@ $(document).ready(function(){
 })
 
 $(document).ready(function() {
-    // Manejar el evento de envío del formulario para agregar contactos
+
     $('#add-contact-form').submit(function(f) {
       f.preventDefault(); // Evitar el envío del formulario
 

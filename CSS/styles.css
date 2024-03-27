@@ -2,6 +2,12 @@ body{
   background: linear-gradient(to right, rgb(66, 1, 66), 	#198754)
 }
 
+#login{
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 14px;
+}
+
 #contactTable, th, td{
   border: 1px solid white;
 }
