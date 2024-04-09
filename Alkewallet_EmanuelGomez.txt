@@ -1,4 +1,2 @@
 Link a GitHub : https://github.com/emanuelggp/alkemyWallet.git
 
-Usuario = usuario123
-Contraseña = 12345
